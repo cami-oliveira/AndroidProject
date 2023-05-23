@@ -83,6 +83,7 @@
         android:clickable="false"
         android:editable="false"
         android:ems="10"
+        android:enabled="false"
         android:hint="@string/result"
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
