@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AtividadeSomativaIMC</string>
+    <string name="calculo_de_imc">Cálculo de IMC</string>
+    <string name="weight">Peso (kg)</string>
+    <string name="height">Altura (m)</string>
+    <string name="button">CALCULAR</string>
+    <string name="result">Resultado</string>
+</resources>
