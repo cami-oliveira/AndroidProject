@@ -5,4 +5,6 @@
     <string name="height">Altura (m)</string>
     <string name="button">CALCULAR</string>
     <string name="result">Resultado</string>
+    <string name="errorMesssage">Campo inválido</string>
+
 </resources>

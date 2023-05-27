@@ -3,14 +3,19 @@ package com.pucpr.atividadesomativaimc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText weightNumberDecimal;
+    TextInputLayout weightInputLayout;
     EditText heightNumberDecimal;
+    TextInputLayout heightInputLayout;
     EditText resultEditText;
 
     @Override
@@ -18,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         weightNumberDecimal = findViewById(R.id.weightNumberDecimal);
+        weightInputLayout = findViewById(R.id.weightNumberDecimalTextInputLayout);
         heightNumberDecimal = findViewById(R.id.heightNumberDecimal);
+        heightInputLayout = findViewById(R.id.heightNumberDecimalTextInputLayout);
         resultEditText = findViewById(R.id.resultEditText);
     }
 
@@ -46,10 +53,25 @@ public class MainActivity extends AppCompatActivity {
     public void resultButtonOnClick(View v) {
 
         float weight = getNumFromEditText(1);
-
         float height = getNumFromEditText(2);
 
+        if ((weightNumberDecimal.getText().toString().trim().equals("")) || (weight == 0.0f)) {
+            weightInputLayout.setError(getString(R.string.errorMesssage));
+            return;
+        } else {
+            weightInputLayout.setError(null);
+        }
+
+        if ((heightNumberDecimal.getText().toString().trim().equals("")) || (height == 0.0f)) {
+            heightInputLayout.setError(getString(R.string.errorMesssage));
+            return;
+        } else {
+            heightInputLayout.setError(null);
+        }
+
         if (weight == 0 || height == 0) {
+
+            resultEditText.setText(null);
             Toast.makeText(this, "Por favor, adicione seu peso e altura", Toast.LENGTH_SHORT).show();
             return;
         }
