@@ -6,5 +6,12 @@
     <string name="button">CALCULAR</string>
     <string name="result">Resultado</string>
     <string name="errorMesssage">Campo inválido</string>
+    <string name="toast_coloque_peso_altura">Por favor, adicione seu peso e altura.</string>
+    <string name="categoria_ibm">Categoria IMC: </string>
+    <string name="abaixo_peso">Abaixo do peso</string>
+    <string name="peso_normal">Peso Normal</string>
+    <string name="acima_peso">Acima do Peso</string>
+    <string name="obesidade">Obesidade</string>
+
 
 </resources>

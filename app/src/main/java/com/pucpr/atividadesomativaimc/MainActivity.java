@@ -3,7 +3,6 @@ package com.pucpr.atividadesomativaimc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,13 +21,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getElements();
+    }
+
+    private void getElements() {
         weightNumberDecimal = findViewById(R.id.weightNumberDecimal);
         weightInputLayout = findViewById(R.id.weightNumberDecimalTextInputLayout);
         heightNumberDecimal = findViewById(R.id.heightNumberDecimal);
         heightInputLayout = findViewById(R.id.heightNumberDecimalTextInputLayout);
         resultEditText = findViewById(R.id.resultEditText);
     }
-
     private float getNumFromEditText(int id) {
         String number = "";
 
@@ -57,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
 
         if ((weightNumberDecimal.getText().toString().trim().equals("")) || (weight == 0.0f)) {
             weightInputLayout.setError(getString(R.string.errorMesssage));
-            return;
+            weightNumberDecimal.setText(null);
         } else {
             weightInputLayout.setError(null);
         }
 
         if ((heightNumberDecimal.getText().toString().trim().equals("")) || (height == 0.0f)) {
             heightInputLayout.setError(getString(R.string.errorMesssage));
-            return;
+            heightNumberDecimal.setText(null);
         } else {
             heightInputLayout.setError(null);
         }
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         if (weight == 0 || height == 0) {
 
             resultEditText.setText(null);
-            Toast.makeText(this, "Por favor, adicione seu peso e altura", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_coloque_peso_altura), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -83,18 +85,18 @@ public class MainActivity extends AppCompatActivity {
         resultEditText.setText(String.valueOf(result));
 
         String bmiCategory = getBMICategory(result);
-        Toast.makeText(this, "Categoria IMC: " + bmiCategory, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.categoria_ibm) + bmiCategory, Toast.LENGTH_SHORT).show();
     }
 
     private String getBMICategory(float bmi) {
         if (bmi < 18.5) {
-            return "Abaixo do peso";
+            return getString(R.string.abaixo_peso);
         } else if (bmi < 25) {
-            return "Peso Normal";
+            return getString(R.string.peso_normal);
         } else if (bmi < 30) {
-            return "Acima do Peso";
+            return getString(R.string.acima_peso);
         } else {
-            return "Obesidade";
+            return getString(R.string.obesidade);
         }
     }
 }
